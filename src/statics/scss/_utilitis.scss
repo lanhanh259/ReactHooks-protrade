@@ -1,0 +1,108 @@
+@import 'bootstrap/scss/utilities';
+@import './root';
+$utilities: map-merge(
+	$utilities,
+	(
+		'bag': (
+			property: background-color,
+			class: bag,
+			values: (
+				main: $main-color,
+				primary: $primary-color,
+				second: $second-color,
+				red: $red-color,
+				orange: $orange-color,
+				white: $white-color,
+				yellow: $yellow-color,
+				green: $green-color,
+				purple: $purple-color,
+				ccc: $ccc-color,
+			),
+		),
+		'txt': (
+			property: color,
+			class: txt,
+			values: (
+				orange: $orange-color,
+				white: $white-color,
+				yellow: $yellow-color,
+				green: $green-color,
+				purple: $purple-color,
+				ccc: $ccc-color,
+			),
+		),
+		'fw': (
+			property: font-weight,
+			class: fw,
+			values: (
+				500: 500,
+				700: 700,
+			),
+		),
+		'p': (
+			property: padding,
+			class: p,
+			values: (
+				0: 0,
+				12: 12px,
+				16: 16px,
+			),
+		),
+		'p-x': (
+			property: padding-right padding-left,
+			class: p-x,
+			values: (
+				4: 4px,
+				12: 12px,
+				16: 16px,
+			),
+		),
+		'p-y': (
+			property: padding-top padding-bottom,
+			class: p-y,
+			values: (
+				0: 0,
+				4: 4px,
+			),
+		),
+		'p-l': (
+			property: padding-left,
+			class: p-l,
+			values: (
+				12: 12px,
+			),
+		),
+		'm': (
+			property: margin,
+			class: m,
+			values: (
+				1: 1px,
+				8: 8px,
+			),
+		),
+		'm-x': (
+			property: margin-right margin-left,
+			class: m-x,
+			values: (
+				8: 8px,
+				12: 12px,
+			),
+		),
+		'm-b': (
+			property: margin-bottom,
+			class: m-b,
+			values: (
+				8: 8px,
+			),
+		),
+		'lh': (
+			property: line-height,
+			class: lh,
+			values: (
+				27: 27px,
+				30: 30px,
+				40: 40px,
+			),
+		),
+	)
+);
