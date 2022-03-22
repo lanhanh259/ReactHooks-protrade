@@ -11,10 +11,9 @@ function App() {
 	return (
 		<div className="App">
 			<Header />
-
 			<div id="app">
 				<div
-					className="home d-flex bag-primary"
+					className="home d-flex bag-main"
 					style={{ height: 'calc(100vh - 44px)' }}
 				>
 					<div className="d-flex flex-column flex-grow-1 flex-shrink-1 bag-second">
@@ -24,7 +23,7 @@ function App() {
 
 					<div
 						className="d-flex flex-column flex-grow-1"
-						style={{ width: '350px' }}
+						style={{ maxWidth: '350px' }}
 					>
 						<History />
 						<Watchlist />

@@ -16,7 +16,7 @@ const PlaceOrder = () => {
 						id="inlineRadio1"
 						value="option1"
 					/>
-					<label className="form-check-label" for="inlineRadio1">
+					<label className="form-check-label" htmlFor="inlineRadio1">
 						Lệnh thường
 					</label>
 				</div>
@@ -28,7 +28,7 @@ const PlaceOrder = () => {
 						id="inlineRadio1"
 						value="option1"
 					/>
-					<label className="form-check-label" for="inlineRadio1">
+					<label className="form-check-label" htmlFor="inlineRadio1">
 						Lệnh Stop
 					</label>
 				</div>
@@ -40,7 +40,7 @@ const PlaceOrder = () => {
 						id="inlineRadio1"
 						value="option1"
 					/>
-					<label className="form-check-label" for="inlineRadio1">
+					<label className="form-check-label" htmlFor="inlineRadio1">
 						Lệnh trailing
 					</label>
 				</div>
@@ -52,14 +52,14 @@ const PlaceOrder = () => {
 						id="inlineRadio1"
 						value="option1"
 					/>
-					<label className="form-check-label" for="inlineRadio1">
+					<label className="form-check-label" htmlFor="inlineRadio1">
 						Lệnh OSO
 					</label>
 				</div>
 			</div>
 			<form className="p-12">
 				<div className="row m-b-8">
-					<label for="" className="col-4 m-auto">
+					<label htmlFor="" className="col-4 m-auto">
 						Mã HĐTL:{' '}
 					</label>
 					<div className="col-8">
@@ -72,7 +72,7 @@ const PlaceOrder = () => {
 					</div>
 				</div>
 				<div className="row m-b-8">
-					<label for="" className="col-4 m-auto">
+					<label htmlFor="" className="col-4 m-auto">
 						Giá đặt:{' '}
 					</label>
 					<div className="col-8">
@@ -84,7 +84,7 @@ const PlaceOrder = () => {
 					</div>
 				</div>
 				<div className="row m-b-8">
-					<label for="" className="col-4 m-auto">
+					<label htmlFor="" className="col-4 m-auto">
 						Khối lượng:
 					</label>
 					<div className="col-8">
@@ -116,7 +116,7 @@ const PlaceOrder = () => {
 						value=""
 						id="flexCheckDefault"
 					/>
-					<label className="form-check-label" for="flexCheckDefault">
+					<label className="form-check-label" htmlFor="flexCheckDefault">
 						Lưu lệnh
 					</label>
 				</div>

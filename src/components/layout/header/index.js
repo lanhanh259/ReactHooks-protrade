@@ -1,7 +1,9 @@
 import React from 'react'
+import { useClock } from '../../../customHooks'
 import logo from '../../../statics/img/logo.svg'
 
 const Header = () => {
+	const { date, time } = useClock()
 	return (
 		<div>
 			<header className="header bag-main d-flex align-items-center p-x-12">
@@ -16,16 +18,14 @@ const Header = () => {
 					</a>
 				</div>
 				<div className="d-flex align-items-center  p-x-16 ">
-					<span className="flex-shrink-0  fw-700 m-x-8 txt-orange">
-						15:43:45
-					</span>
-					<span className="flex-shrink-0 fw-500 txt-orange">2021/12/31</span>
+					<span className="flex-shrink-0  fw-700 m-x-8 txt-orange">{time}</span>
+					<span className="flex-shrink-0 fw-500 txt-orange">{date}</span>
 				</div>
 				<div className="header__horizontal-menu d-flex">
 					<ul className="flex-shrink-0 d-flex ">
 						<li>
 							<a
-								className="active txt-white fw-700 p-x-12 p-y-4 border-start border-333"
+								className="active txt-white fw-700 p-x-12 p-y-4 bs-333 border-333"
 								href=""
 							>
 								Trang chủ
@@ -33,7 +33,7 @@ const Header = () => {
 						</li>
 						<li>
 							<a
-								className="txt-white fw-700 p-x-12 p-y-4 border-start border-333"
+								className="txt-white fw-700 p-x-12 p-y-4 bs-333 border-333"
 								href=""
 							>
 								Tài sản
@@ -41,7 +41,7 @@ const Header = () => {
 						</li>
 						<li>
 							<a
-								className="txt-white fw-700 p-x-12 p-y-4 border-start border-333"
+								className="txt-white fw-700 p-x-12 p-y-4 bs-333 border-333"
 								href=""
 							>
 								Hướng dẫn
