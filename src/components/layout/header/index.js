@@ -1,6 +1,7 @@
 import React from 'react'
 import { useClock } from '../../../customHooks'
 import logo from '../../../statics/img/logo.svg'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
 	const { date, time } = useClock()
@@ -24,33 +25,33 @@ const Header = () => {
 				<div className="header__horizontal-menu d-flex">
 					<ul className="flex-shrink-0 d-flex ">
 						<li>
-							<a
+							<Link
 								className="active txt-white fw-700 p-x-12 p-y-4 bs-333 border-333"
-								href=""
+								to="/trang-chu"
 							>
 								Trang chủ
-							</a>
+							</Link>
 						</li>
 						<li>
-							<a
+							<Link
 								className="txt-white fw-700 p-x-12 p-y-4 bs-333 border-333"
-								href=""
+								to="/tai-san"
 							>
 								Tài sản
-							</a>
+							</Link>
 						</li>
 						<li>
-							<a
+							<Link
 								className="txt-white fw-700 p-x-12 p-y-4 bs-333 border-333"
-								href=""
+								to="/huong-dan-su-dung"
 							>
 								Hướng dẫn
-							</a>
+							</Link>
 						</li>
 					</ul>
 					<div className="flex-shrink-0">
 						<span className="txt-orange">Lãi/Lỗ:</span>
-						<span className="txt-yellow">0</span>
+						<span className="txt-yellow  p-x-4">0</span>
 					</div>
 				</div>
 				<div className="header__profitloss-top flex-grow-1 text-center">
@@ -64,39 +65,47 @@ const Header = () => {
 						</a>
 					</div>
 				</div>
+
 				{/* <!-- header: menu --> */}
 				<div className="header__menu d-flex justify-content-end align-items-center h-100">
-					<div className="flex-shrink-0">
+					<div className="flex-shrink-0 m-x-8">
 						<span
-							className=" border rounded p-y-4 p-x-12 fw-700"
-							style={{ borderColor: 'orange!important' }}
+							className=" rounded p-y-4 p-x-12 fw-700"
+							style={{ border: '1px solid orange' }}
 						>
 							BẢN TRIAL
 						</span>
 					</div>
-					<div className="header__uplevel flex-shrink-0 m-x-12">
-						<span className="rounded p-y-4 p-x-12  bag-orange">
-							<a href="">Nâng cấp tài khoản</a>
+					<div className="header__uplevel flex-shrink-0">
+						<span className="rounded p-y-4 bag-orange">
+							<a
+								className=" p-x-8"
+								href="https://myaccount.vndirect.com.vn/account-info?tab=account-register"
+								target="_blank"
+								rel="noreferrer"
+							>
+								Nâng cấp tài khoản
+							</a>
 						</span>
 					</div>
-					<div className="position-relative h-100 flex-shrink-0 ">
-						<div className="header__account h-100 p-x-12">
+					<div className="header__account position-relative h-100 flex-shrink-0 p-x-8">
+						<div className="">
 							<i className="fas fa-user"></i>
 							<span className="p-x-4">Nguyễn Lân Hạnh</span>
 							<i className="fas fa-angle-down"></i>
 						</div>
 						<div
-							className="d-none text-end position-absolute end-0 p-x-12 border-top rounded-bottom bag-primary"
+							id="logout"
+							className=" text-end position-absolute end-0 p-x-12 rounded-bottom bag-main"
 							style={{
-								top: '95%',
+								top: '44px',
 								width: '200px',
-								lineHeight: '43px',
-								borderColor: 'orange!important',
-								zIndex: 100,
+								borderTop: '1px solid orange',
+								cursor: 'pointer',
 							}}
 						>
 							<i className="fas fa-sign-out-alt"></i>
-							Log out
+							<span className="p-x-8">Log out</span>
 						</div>
 					</div>
 				</div>

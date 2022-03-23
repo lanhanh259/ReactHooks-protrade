@@ -21,8 +21,8 @@ module.exports = {
 		'no-debugger': 'off',
 		quotes: ['error', 'single'],
 		// semi: ['warn', 'always'],
-		// 'no-unused-vars': ['warn'],
-		// 'react/no-unused-prop-types': ['warn'],
-		// 'react/prop-types': 0,
+		'no-unused-vars': ['warn'],
+		'react/no-unused-prop-types': ['warn'],
+		'react/prop-types': 'off',
 	},
 }

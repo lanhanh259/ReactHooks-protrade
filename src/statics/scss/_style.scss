@@ -21,15 +21,28 @@
 		}
 	}
 	&__account {
+		div:nth-child(2) {
+			display: none;
+		}
 		&:hover {
 			cursor: pointer;
 			background-color: $primary-color;
 			color: $orange-color;
 		}
-		&:hover ~ div {
-			display: block !important;
+		&:hover div:nth-child(2) {
+			display: block;
 		}
 	}
+	// #logout::before {
+	// 	content: '';
+	// 	display: block;
+	// 	position: absolute;
+	// 	left: 0;
+	// 	top: -16px;
+	// 	height: 20px;
+	// 	width: 100%;
+	// 	background-color: red;
+	// }
 }
 #app {
 	iframe {
@@ -84,4 +97,15 @@
 }
 ::-webkit-scrollbar-track {
 	background: transparent;
+}
+@media (max-width: 1200px) {
+	.header {
+		// &__
+		&__profitloss-top {
+			display: none;
+		}
+		&__menu {
+			flex-grow: 1;
+		}
+	}
 }

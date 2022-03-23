@@ -15,7 +15,7 @@ const History = () => {
 					<div className="flex-grow-1">
 						<span>Sàn: </span>
 						<br />
-						<span className="txt-">1412.7</span>
+						<span className="txt-blue">1412.7</span>
 					</div>
 					<div className="flex-grow-1">
 						<span>TC: </span>

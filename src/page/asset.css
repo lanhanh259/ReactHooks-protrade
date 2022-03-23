@@ -1,0 +1,7 @@
+.assets-overview__item--dotted {
+	border-bottom: 1px dotted #a1a1a1;
+}
+
+.assets-overview__item--solid {
+	border-bottom: 1px solid #a1a1a1;
+}
