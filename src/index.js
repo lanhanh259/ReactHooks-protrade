@@ -5,12 +5,15 @@ import './index.css'
 import reportWebVitals from './reportWebVitals'
 import AllRoutes from './routers'
 import './statics/scss/main.scss'
+import { RecoilRoot } from 'recoil'
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Router>
-			<AllRoutes />
-		</Router>
+		<RecoilRoot>
+			<Router>
+				<AllRoutes />
+			</Router>
+		</RecoilRoot>
 	</React.StrictMode>,
 	document.getElementById('root')
 )

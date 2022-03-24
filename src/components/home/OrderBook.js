@@ -1,39 +1,96 @@
-import React from 'react'
+import React, { useState } from 'react'
+import clsx from 'clsx'
+import { useRecoilState, useSetRecoilState } from 'recoil'
+import { isDisplayState } from '../../recoilState'
+
+const list = [
+	{
+		id: 1,
+		name: 'Lệnh trong ngày',
+	},
+	{
+		id: 2,
+		name: 'Lệnh điều kiện',
+	},
+]
 
 const OrderBook = () => {
+	const [active, setActive] = useState(1)
+	const [isDisplay, setIsDisplay] = useRecoilState(isDisplayState)
 	return (
 		<div id="orderbook" className="flex-grow-1 m-1 bag-second">
 			<div className="row lh-40 p-x-12">
-				<div className="col active">
-					<a className="active" href="">
+				{list.map((item) => (
+					<>
+						<div
+							role="button"
+							className={clsx('col', { active: item.id === active })}
+							onClick={() => setActive(item.id)}
+						>
+							{item.name}
+						</div>
+					</>
+				))}
+				{/* <div className="col active">
+					<span role="button" className="active">
 						Lệnh trong ngày
-					</a>
+					</span>
 				</div>
 				<div className="col">
-					<a href="">Lệnh điều kiện</a>
-				</div>
+					<span role="button">Lệnh điều kiện</span>
+				</div> */}
+
 				<div className="col-auto">
-					<i className="fas fa-sync-alt txt-orange p-x-12 fw-bold"></i>
-					<i className="fas fa-minus txt-orange fw-bold"></i>
+					<i
+						role="button"
+						className="fas fa-sync-alt txt-orange p-x-12 fw-bold"
+					></i>
+					<i
+						role="button"
+						className="fas fa-minus txt-orange fw-bold"
+						onClick={() => setIsDisplay(!isDisplay)}
+					></i>
 				</div>
 			</div>
-			<div>
-				<div
-					className="d-flex text-center bag-third lh-30"
-					style={{ height: '42px', borderTop: '1px solid #444' }}
-				>
-					<div className="flex-grow-1">Lệnh</div>
-					<div className="flex-grow-1">Mã</div>
-					<div className="flex-grow-1">KL Khớp</div>
-					<div className="flex-grow-1">Giá</div>
-					<div className="flex-grow-1">TT</div>
-				</div>
+			{active === 1 ? (
 				<div>
-					<div className="text-center p-16 text-secondary fs-6">
-						Chưa có lệnh nào trong sổ lệnh
+					<div
+						className="d-flex text-center bag-third lh-30"
+						style={{ height: '42px', borderTop: '1px solid #444' }}
+					>
+						<div className="flex-grow-1">Lệnh</div>
+						<div className="flex-grow-1">Mã</div>
+						<div className="flex-grow-1">KL Khớp</div>
+						<div className="flex-grow-1">Giá</div>
+						<div className="flex-grow-1">TT</div>
+					</div>
+					<div>
+						<div className="text-center p-16 text-secondary fs-6">
+							Chưa có lệnh nào trong sổ lệnh
+						</div>
 					</div>
 				</div>
-			</div>
+			) : (
+				<div>
+					<div
+						className="d-flex text-center bag-third lh-30"
+						style={{ height: '42px', borderTop: '1px solid #444' }}
+					>
+						<div className="flex-grow-1">Lệnh</div>
+						<div className="flex-grow-1">Mã</div>
+						<div className="flex-grow-1">Giá kích hoạt</div>
+						<div className="flex-grow-1">KL </div>
+						<div className="flex-grow-1">Giá</div>
+						<div className="flex-grow-1">Ngày hết hạn</div>
+						<div className="flex-grow-1">TT</div>
+					</div>
+					<div>
+						<div className="text-center p-16 text-secondary fs-6">
+							Chưa có lệnh nào trong sổ lệnh
+						</div>
+					</div>
+				</div>
+			)}
 		</div>
 	)
 }

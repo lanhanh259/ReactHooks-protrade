@@ -1,5 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+import clsx from 'clsx'
+
+const list = [
+	{ id: 1, name: 'Bước giá', active: true },
+	{ id: 2, name: 'Lịch sử khớp lệnh', active: false },
+]
 const History = () => {
+	const [active, setActive] = useState(1)
+
 	return (
 		<>
 			<div
@@ -32,123 +40,180 @@ const History = () => {
 
 				<div>
 					<div className="d-flex text-center lh-30">
-						<span className="active flex-grow-1 fw-700">Bước giá</span>
-						<span className="flex-grow-1">Lịch sử khớp lệnh</span>
+						{list.map((item) => (
+							<>
+								<span
+									key={item}
+									role="button"
+									className={clsx('flex-grow-1', 'fw-700', {
+										active: item.id === active,
+									})}
+									onClick={() => setActive(item.id)}
+								>
+									{item.name}
+								</span>
+							</>
+						))}
 					</div>
-					<div>
-						<div className="d-flex text-center bag-third lh-30">
-							<div className="flex-grow-1 txt-ccc">KL Mua</div>
-							<div className="flex-grow-1 txt-ccc">Giá Mua</div>
+					{active === 1 ? (
+						<div>
+							<div className="d-flex text-center bag-third lh-30">
+								<div className="width-25 txt-ccc">KL Mua</div>
+								<div className="width-25 txt-ccc">Giá Mua</div>
+								<div className="width-25 txt-ccc be-444">Giá Bán</div>
+								<div className="width-25 txt-ccc">KL Bán</div>
+							</div>
+							<div>
+								<div className=" d-flex text-center bb-444 lh-27 ">
+									<div className="width-25 ">28</div>
+									<div className="width-25 txt-green ">1512.5</div>
+									<div className="width-25 txt-green be-444">1512.9</div>
+									<div className="width-25 ">5</div>
+								</div>
+								<div className=" d-flex text-center bb-444 lh-27 ">
+									<div className="width-25 ">28</div>
+									<div className="width-25 txt-green ">1512.5</div>
+									<div className="width-25 txt-green be-444">1512.9</div>
+									<div className="width-25 ">5</div>
+								</div>
+								<div className=" d-flex text-center bb-444 lh-27 ">
+									<div className="width-25 ">28</div>
+									<div className="width-25 txt-green ">1512.5</div>
+									<div className="width-25 txt-green be-444">1512.9</div>
+									<div className="width-25 ">5</div>
+								</div>
+								<div className=" d-flex text-center bb-444 lh-27 ">
+									<div className="width-25 ">28</div>
+									<div className="width-25 txt-green ">1512.5</div>
+									<div className="width-25 txt-green be-444">1512.9</div>
+									<div className="width-25 ">5</div>
+								</div>
+								<div className=" d-flex text-center bb-444 lh-27 ">
+									<div className="width-25 ">28</div>
+									<div className="width-25 txt-green ">1512.5</div>
+									<div className="width-25 txt-green be-444">1512.9</div>
+									<div className="width-25 ">5</div>
+								</div>
+								<div className=" d-flex text-center bb-444 lh-27 ">
+									<div className="width-25 ">28</div>
+									<div className="width-25 txt-green ">1512.5</div>
+									<div className="width-25 txt-green be-444">1512.9</div>
+									<div className="width-25 ">5</div>
+								</div>
+								<div className=" d-flex text-center bb-444 lh-27 ">
+									<div className="width-25 ">28</div>
+									<div className="width-25 txt-green ">1512.5</div>
+									<div className="width-25 txt-green be-444">1512.9</div>
+									<div className="width-25 ">5</div>
+								</div>
+								<div className=" d-flex text-center bb-444 lh-27 ">
+									<div className="width-25 ">28</div>
+									<div className="width-25 txt-green ">1512.5</div>
+									<div className="width-25 txt-green be-444">1512.9</div>
+									<div className="width-25 ">5</div>
+								</div>
+							</div>
+						</div>
+					) : (
+						<div>
+							<div className=" d-flex text-center bag-third lh-30">
+								<div className="be-444 width-20">TG</div>
+								<div className="be-444 width-20">Giá</div>
+								<div className="be-444 width-20">+/-</div>
+								<div className="be-444 width-20">KL</div>
+								<div className="be-444 width-20">KL tích lũy</div>
+							</div>
 							<div
-								className="flex-grow-1 txt-ccc"
-								// style={{ borderLeft: '1.5px solid #444' }}
+								className="derivative-info-row-price overflow-auto"
+								style={{ height: '240px', width: 'calc(100% + 10px)' }}
 							>
-								Giá Bán
-							</div>
-							<div className="flex-grow-1 txt-ccc">KL Bán</div>
-						</div>
-						<div
-							className="derivative-info-row-price overflow-auto"
-							style={{ height: '280px' }}
-						>
-							<div className="derivative-info-row-step-price d-flex text-center lh-27 ">
-								<div className="flex-grow-1 ">28</div>
-								<div className="flex-grow-1 txt-green ">1512.5</div>
-								<div className="derivative-info-row-step-price__item flex-grow-1 txt-green ">
-									1512.9
+								<div className=" d-flex text-center lh-27">
+									<div className="be-444 width-20">14:45:19</div>
+									<div className="be-444 width-20 txt-red">1512.5</div>
+									<div className="be-444 width-20">4.5</div>
+									<div className="be-444 width-20">3,548</div>
+									<div className="be-444 width-20">113,617</div>
 								</div>
-								<div className="flex-grow-1 ">5</div>
-							</div>
-							<div className="derivative-info-row-step-price d-flex text-center lh-27 ">
-								<div className="flex-grow-1 ">28</div>
-								<div className="flex-grow-1 txt-green ">1512.5</div>
-								<div className="derivative-info-row-step-price__item flex-grow-1 txt-green ">
-									1512.9
+								<div className=" d-flex text-center lh-27">
+									<div className="be-444 width-20">14:45:19</div>
+									<div className="be-444 width-20 txt-red">1512.5</div>
+									<div className="be-444 width-20">4.5</div>
+									<div className="be-444 width-20">3,548</div>
+									<div className="be-444 width-20">113,617</div>
 								</div>
-								<div className="flex-grow-1 ">5</div>
-							</div>
-							<div className="derivative-info-row-step-price d-flex text-center lh-27 ">
-								<div className="flex-grow-1 ">28</div>
-								<div className="flex-grow-1 txt-green ">1512.5</div>
-								<div className="derivative-info-row-step-price__item flex-grow-1 txt-green ">
-									1512.9
+								<div className=" d-flex text-center lh-27">
+									<div className="be-444 width-20">14:45:19</div>
+									<div className="be-444 width-20 txt-red">1512.5</div>
+									<div className="be-444 width-20">4.5</div>
+									<div className="be-444 width-20">3,548</div>
+									<div className="be-444 width-20">113,617</div>
 								</div>
-								<div className="flex-grow-1 ">5</div>
-							</div>
-							<div className="derivative-info-row-step-price d-flex text-center lh-27 ">
-								<div className="flex-grow-1 ">28</div>
-								<div className="flex-grow-1 txt-green ">1512.5</div>
-								<div className="derivative-info-row-step-price__item flex-grow-1 txt-green ">
-									1512.9
+								<div className=" d-flex text-center lh-27">
+									<div className="be-444 width-20">14:45:19</div>
+									<div className="be-444 width-20 txt-red">1512.5</div>
+									<div className="be-444 width-20">4.5</div>
+									<div className="be-444 width-20">3,548</div>
+									<div className="be-444 width-20">113,617</div>
 								</div>
-								<div className="flex-grow-1 ">5</div>
-							</div>
-							<div className="derivative-info-row-step-price d-flex text-center lh-27 ">
-								<div className="flex-grow-1 ">28</div>
-								<div className="flex-grow-1 txt-green ">1512.5</div>
-								<div className="derivative-info-row-step-price__item flex-grow-1 txt-green ">
-									1512.9
+								<div className=" d-flex text-center lh-27">
+									<div className="be-444 width-20">14:45:19</div>
+									<div className="be-444 width-20 txt-red">1512.5</div>
+									<div className="be-444 width-20">4.5</div>
+									<div className="be-444 width-20">3,548</div>
+									<div className="be-444 width-20">113,617</div>
 								</div>
-								<div className="flex-grow-1 ">5</div>
-							</div>
-							<div className="derivative-info-row-step-price d-flex text-center lh-27 ">
-								<div className="flex-grow-1 ">28</div>
-								<div className="flex-grow-1 txt-green ">1512.5</div>
-								<div className="derivative-info-row-step-price__item flex-grow-1 txt-green ">
-									1512.9
+								<div className=" d-flex text-center lh-27">
+									<div className="be-444 width-20">14:45:19</div>
+									<div className="be-444 width-20 txt-red">1512.5</div>
+									<div className="be-444 width-20">4.5</div>
+									<div className="be-444 width-20">3,548</div>
+									<div className="be-444 width-20">113,617</div>
 								</div>
-								<div className="flex-grow-1 ">5</div>
-							</div>
-							<div className="derivative-info-row-step-price d-flex text-center lh-27 ">
-								<div className="flex-grow-1 ">28</div>
-								<div className="flex-grow-1 txt-green ">1512.5</div>
-								<div className="derivative-info-row-step-price__item flex-grow-1 txt-green ">
-									1512.9
+								<div className=" d-flex text-center lh-27">
+									<div className="be-444 width-20">14:45:19</div>
+									<div className="be-444 width-20 txt-red">1512.5</div>
+									<div className="be-444 width-20">4.5</div>
+									<div className="be-444 width-20">3,548</div>
+									<div className="be-444 width-20">113,617</div>
 								</div>
-								<div className="flex-grow-1 ">5</div>
-							</div>
-							<div className="derivative-info-row-step-price d-flex text-center lh-27 ">
-								<div className="flex-grow-1 ">28</div>
-								<div className="flex-grow-1 txt-green ">1512.5</div>
-								<div className="derivative-info-row-step-price__item flex-grow-1 txt-green ">
-									1512.9
+								<div className=" d-flex text-center lh-27">
+									<div className="be-444 width-20">14:45:19</div>
+									<div className="be-444 width-20 txt-red">1512.5</div>
+									<div className="be-444 width-20">4.5</div>
+									<div className="be-444 width-20">3,548</div>
+									<div className="be-444 width-20">113,617</div>
 								</div>
-								<div className="flex-grow-1 ">5</div>
-							</div>
-							<div className="derivative-info-row-step-price d-flex text-center lh-27 ">
-								<div className="flex-grow-1 ">28</div>
-								<div className="flex-grow-1 txt-green ">1512.5</div>
-								<div className="derivative-info-row-step-price__item flex-grow-1 txt-green ">
-									1512.9
+								<div className=" d-flex text-center lh-27">
+									<div className="be-444 width-20">14:45:19</div>
+									<div className="be-444 width-20 txt-red">1512.5</div>
+									<div className="be-444 width-20">4.5</div>
+									<div className="be-444 width-20">3,548</div>
+									<div className="be-444 width-20">113,617</div>
 								</div>
-								<div className="flex-grow-1 ">5</div>
-							</div>
-							<div className="derivative-info-row-step-price d-flex text-center lh-27 ">
-								<div className="flex-grow-1 ">28</div>
-								<div className="flex-grow-1 txt-green ">1512.5</div>
-								<div className="derivative-info-row-step-price__item flex-grow-1 txt-green ">
-									1512.9
+								<div className=" d-flex text-center lh-27">
+									<div className="be-444 width-20">14:45:19</div>
+									<div className="be-444 width-20 txt-red">1512.5</div>
+									<div className="be-444 width-20">4.5</div>
+									<div className="be-444 width-20">3,548</div>
+									<div className="be-444 width-20">113,617</div>
 								</div>
-								<div className="flex-grow-1 ">5</div>
-							</div>
-							<div className="derivative-info-row-step-price d-flex text-center lh-27 ">
-								<div className="flex-grow-1 ">28</div>
-								<div className="flex-grow-1 txt-green ">1512.5</div>
-								<div className="derivative-info-row-step-price__item flex-grow-1 txt-green ">
-									1512.9
+								<div className=" d-flex text-center lh-27">
+									<div className="be-444 width-20">14:45:19</div>
+									<div className="be-444 width-20 txt-red">1512.5</div>
+									<div className="be-444 width-20">4.5</div>
+									<div className="be-444 width-20">3,548</div>
+									<div className="be-444 width-20">113,617</div>
 								</div>
-								<div className="flex-grow-1 ">5</div>
-							</div>
-							<div className="derivative-info-row-step-price d-flex text-center lh-27 ">
-								<div className="flex-grow-1 ">28</div>
-								<div className="flex-grow-1 txt-green ">1512.5</div>
-								<div className="derivative-info-row-step-price__item flex-grow-1 txt-green ">
-									1512.9
+								<div className=" d-flex text-center lh-27">
+									<div className="be-444 width-20">14:45:19</div>
+									<div className="be-444 width-20 txt-red">1512.5</div>
+									<div className="be-444 width-20">4.5</div>
+									<div className="be-444 width-20">3,548</div>
+									<div className="be-444 width-20">113,617</div>
 								</div>
-								<div className="flex-grow-1 ">5</div>
 							</div>
 						</div>
-					</div>
+					)}
 				</div>
 			</div>
 		</>

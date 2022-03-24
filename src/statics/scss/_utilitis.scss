@@ -127,5 +127,13 @@ $utilities: map-merge(
 				444: 1px solid#444,
 			),
 		),
+		'width': (
+			property: width,
+			class: width,
+			values: (
+				20: 20%,
+				25: 25%,
+			),
+		),
 	)
 );
