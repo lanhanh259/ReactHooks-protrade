@@ -13,12 +13,15 @@ const OrderBook = () => {
 					<a href="">Lệnh điều kiện</a>
 				</div>
 				<div className="col-auto">
-					<i className="fas fa-sync-alt txt-orange"></i>
-					<i className="fas fa-minus txt-orange"></i>
+					<i className="fas fa-sync-alt txt-orange p-x-12 fw-bold"></i>
+					<i className="fas fa-minus txt-orange fw-bold"></i>
 				</div>
 			</div>
 			<div>
-				<div className="d-flex text-center bag-third lh-30">
+				<div
+					className="d-flex text-center bag-third lh-30"
+					style={{ height: '42px', borderTop: '1px solid #444' }}
+				>
 					<div className="flex-grow-1">Lệnh</div>
 					<div className="flex-grow-1">Mã</div>
 					<div className="flex-grow-1">KL Khớp</div>

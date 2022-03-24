@@ -33,8 +33,31 @@ const HomePage = () => {
 				>
 					<OrderBook />
 					<PlaceOrder />
+					<div className="d-flex">
+						<div
+							role="button"
+							className="lh-30 cursor-pointer active flex-grow-1"
+						>
+							Sổ lệnh
+						</div>
+						<div role="button" className="lh-30 cs-pointer flex-grow-1">
+							Danh mục
+						</div>
+
+						<div role="button" className="lh-30 cs-pointer flex-grow-1">
+							Tài sản
+						</div>
+					</div>
 				</div>
 			</div>
+			<footer
+				className="lh-30 footer-asset position-fixed bottom-0  start-0 end-0 bag-main "
+				style={{ maxWidth: '400px', fontSize: '12px' }}
+			>
+				<span style={{ color: '#777' }}>
+					Bản quyền thuộc về VNDIRECT ©2021 . v 2.2.2
+				</span>
+			</footer>
 		</div>
 	)
 }

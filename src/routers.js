@@ -11,8 +11,8 @@ const AllRoutes = () => (
 			<Route index element={<Navigate to="/trang-chu" />}></Route>
 			<Route path="trang-chu" element={<HomePage />}></Route>
 			<Route path="tai-san" element={<AssetPage />}></Route>
-			<Route path="huong-dan-su-dung" elementt={<InstructionsPage />}></Route>
-			<Route path="*" elementt={<HomePage />}></Route>
+			<Route path="huong-dan-su-dung" element={<InstructionsPage />}></Route>
+			<Route path="*" element={<HomePage />}></Route>
 		</Route>
 	</Routes>
 )

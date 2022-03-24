@@ -1,7 +1,7 @@
 import React from 'react'
 import './asset.css'
 
-const Asset = () => {
+const AssetPage = () => {
 	return (
 		<div className="bag-second" style={{ padding: ' 42px 0' }}>
 			<div className="fst-italic " style={{ lineHeight: '35px' }}>
@@ -144,4 +144,4 @@ const Asset = () => {
 	)
 }
 
-export default Asset
+export default AssetPage
