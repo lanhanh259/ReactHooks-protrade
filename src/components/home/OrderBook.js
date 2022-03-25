@@ -31,14 +31,6 @@ const OrderBook = () => {
 						</div>
 					</>
 				))}
-				{/* <div className="col active">
-					<span role="button" className="active">
-						Lệnh trong ngày
-					</span>
-				</div>
-				<div className="col">
-					<span role="button">Lệnh điều kiện</span>
-				</div> */}
 
 				<div className="col-auto">
 					<i

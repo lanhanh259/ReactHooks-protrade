@@ -1,10 +1,14 @@
 import React from 'react'
-import { useClock } from '../../../customHooks'
+// import { useClock } from '../../../customHooks'
 import logo from '../../../statics/img/logo.svg'
 import { Link } from 'react-router-dom'
+import { isPopupState } from '../../../recoilState'
+import { useRecoilState } from 'recoil'
+import Clock from './Clock'
 
 const Header = () => {
-	const { date, time } = useClock()
+	const [isPopup, setIsPopup] = useRecoilState(isPopupState)
+
 	return (
 		<div>
 			<header className="header bag-main d-flex align-items-center p-x-12">
@@ -18,10 +22,11 @@ const Header = () => {
 						/>
 					</a>
 				</div>
-				<div className="d-flex align-items-center  p-x-16 ">
+				{/* <div className="d-flex align-items-center  p-x-16 ">
 					<span className="flex-shrink-0  fw-700 m-x-8 txt-orange">{time}</span>
 					<span className="flex-shrink-0 fw-500 txt-orange">{date}</span>
-				</div>
+				</div> */}
+				<Clock />
 				<div className="header__horizontal-menu d-flex">
 					<ul className="flex-shrink-0 d-flex ">
 						<li>
@@ -56,13 +61,13 @@ const Header = () => {
 				</div>
 				<div className="header__profitloss-top flex-grow-1 text-center">
 					<div
+						role="button"
 						className=" d-inline rounded p-y-4 p-x-12"
 						style={{ backgroundColor: '#97037c' }}
+						onClick={() => setIsPopup(!isPopup)}
 					>
-						<a href="">
-							<i className="fas fa-trophy p-x-4"></i>
-							Top cao thủ phái sinh
-						</a>
+						<i className="fas fa-trophy p-x-4"></i>
+						Top cao thủ phái sinh
 					</div>
 				</div>
 

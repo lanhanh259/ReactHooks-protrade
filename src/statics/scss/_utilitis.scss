@@ -18,12 +18,17 @@ $utilities: map-merge(
 				green: $green-color,
 				purple: $purple-color,
 				ccc: $ccc-color,
+				overlay: rgba(0, 0, 0, 0.6),
 			),
 		),
 		'txt': (
 			property: color,
 			class: txt,
 			values: (
+				main: $main-color,
+				primary: $primary-color,
+				second: $second-color,
+				third: $third-color,
 				red: $red-color,
 				orange: $orange-color,
 				white: $white-color,
@@ -47,9 +52,11 @@ $utilities: map-merge(
 			class: p,
 			values: (
 				0: 0,
+				4: 4px,
 				8: 8px,
 				12: 12px,
 				16: 16px,
+				20: 20px,
 			),
 		),
 		'p-x': (
@@ -133,6 +140,7 @@ $utilities: map-merge(
 			values: (
 				20: 20%,
 				25: 25%,
+				50: 50%,
 			),
 		),
 	)
