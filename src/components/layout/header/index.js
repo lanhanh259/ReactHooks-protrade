@@ -1,9 +1,8 @@
 import React from 'react'
-// import { useClock } from '../../../customHooks'
-import logo from '../../../statics/img/logo.svg'
 import { Link } from 'react-router-dom'
-import { isPopupState } from '../../../recoilState'
 import { useRecoilState } from 'recoil'
+import { isPopupState } from '../../../recoil/atom'
+import logo from '../../../statics/img/logo.svg'
 import Clock from './Clock'
 
 const Header = () => {

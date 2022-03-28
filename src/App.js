@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil'
 import './App.css'
 import Header from './components/layout/header'
 import { TopDerivativePopup } from './popup'
-import { isPopupState } from './recoilState'
+import { isPopupState } from './recoil/atom'
 
 function App() {
 	const isPopup = useRecoilValue(isPopupState)

@@ -1,13 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
-import topDerivativeImg from '../statics/img/top-derivative.png'
-import { useRecoilState } from 'recoil'
-import { isPopupState } from '../recoilState'
 import { useNavigate } from 'react-router-dom'
+import { useRecoilState } from 'recoil'
+import styled from 'styled-components'
+import { isPopupState } from '../recoil/atom'
+import topDerivativeImg from '../statics/img/top-derivative.png'
 
 const TopDerivative = () => {
 	const [isPopup, setIsPopup] = useRecoilState(isPopupState)
 	const navigate = useNavigate()
+
 	return (
 		<>
 			<Container className="position-fixed top-0 end-0 bottom-0 start-0 bag-overlay">

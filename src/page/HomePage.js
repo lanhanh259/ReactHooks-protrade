@@ -8,10 +8,11 @@ import {
 	PlaceOrderHome as PlaceOrder,
 	WatchlistHome as Watchlist,
 } from '../components/home'
-import { isDisplayState } from '../recoilState'
+import { isDisplayState } from '../recoil/atom'
 
 const HomePage = () => {
 	const isDisplay = useRecoilValue(isDisplayState)
+
 	return (
 		<div id="app">
 			<div
