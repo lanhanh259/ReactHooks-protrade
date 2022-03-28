@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
 import clsx from 'clsx'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import React, { useState } from 'react'
+import { useRecoilState } from 'recoil'
 import { isDisplayState } from '../../recoilState'
 
 const list = [
@@ -17,19 +17,19 @@ const list = [
 const OrderBook = () => {
 	const [active, setActive] = useState(1)
 	const [isDisplay, setIsDisplay] = useRecoilState(isDisplayState)
+
 	return (
 		<div id="orderbook" className="flex-grow-1 m-1 bag-second">
 			<div className="row lh-40 p-x-12">
 				{list.map((item) => (
-					<>
-						<div
-							role="button"
-							className={clsx('col', { active: item.id === active })}
-							onClick={() => setActive(item.id)}
-						>
-							{item.name}
-						</div>
-					</>
+					<div
+						key={item.id}
+						role="button"
+						className={clsx('col', { active: item.id === active })}
+						onClick={() => setActive(item.id)}
+					>
+						{item.name}
+					</div>
 				))}
 
 				<div className="col-auto">

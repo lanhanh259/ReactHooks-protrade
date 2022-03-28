@@ -12,6 +12,7 @@ import { isDisplayState } from '../recoilState'
 
 const HomePage = () => {
 	const isDisplay = useRecoilValue(isDisplayState)
+
 	return (
 		<div id="app">
 			<div

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useClock } from '../../../customHooks'
+import { useClock } from '../../../hooks'
 
 const Clock = () => {
 	const { date, time } = useClock()

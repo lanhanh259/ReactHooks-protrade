@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react'
 import moment from 'moment'
+import { useEffect, useState } from 'react'
 
-const useClock = () => {
+export default function useClock() {
 	const [date, setDate] = useState(moment().format('YYYY/MM/DD'))
 	const [time, setTime] = useState(moment().format('HH:mm:ss'))
+
 	useEffect(() => {
 		const _timer = setInterval(() => {
 			setTime(() => moment().format('HH:mm:ss '))
@@ -13,6 +14,7 @@ const useClock = () => {
 			clearInterval(_timer)
 		}
 	}, [])
+
 	useEffect(() => {
 		const _date = setInterval(() => {
 			setDate(() => moment().format('YYYY/MM/DD'))
@@ -25,5 +27,3 @@ const useClock = () => {
 
 	return { date, time }
 }
-
-export { useClock }

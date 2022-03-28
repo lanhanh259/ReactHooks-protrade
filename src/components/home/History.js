@@ -41,18 +41,16 @@ const History = () => {
 				<div>
 					<div className="d-flex text-center lh-30">
 						{list.map((item) => (
-							<>
-								<span
-									key={item}
-									role="button"
-									className={clsx('flex-grow-1', 'fw-700', {
-										active: item.id === active,
-									})}
-									onClick={() => setActive(item.id)}
-								>
-									{item.name}
-								</span>
-							</>
+							<span
+								key={item.id}
+								role="button"
+								className={clsx('flex-grow-1', 'fw-700', {
+									active: item.id === active,
+								})}
+								onClick={() => setActive(item.id)}
+							>
+								{item.name}
+							</span>
 						))}
 					</div>
 					{active === 1 ? (
