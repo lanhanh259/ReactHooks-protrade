@@ -1,12 +1,12 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
 import {
-	ChartHome as Chart,
-	HistoryHome as History,
-	MarketHome as Market,
-	OrderBookHome as OrderBook,
-	PlaceOrderHome as PlaceOrder,
-	WatchlistHome as Watchlist,
+	Chart,
+	History,
+	Market,
+	OrderBook,
+	PlaceOrder,
+	Watchlist,
 } from '../components/home'
 import { isDisplayState } from '../recoil/atom'
 

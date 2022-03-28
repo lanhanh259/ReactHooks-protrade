@@ -1,6 +1,7 @@
-export { default as ChartHome } from './Chart'
-export { default as HistoryHome } from './History'
-export { default as MarketHome } from './Market'
-export { default as OrderBookHome } from './OrderBook'
-export { default as PlaceOrderHome } from './PlaceOrder'
-export { default as WatchlistHome } from './Watchlist'
+import Chart from './Chart'
+import History from './History'
+import Market from './Market'
+import OrderBook from './OrderBook'
+import PlaceOrder from './PlaceOrder'
+import Watchlist from './Watchlist'
+export { Chart, History, Market, OrderBook, PlaceOrder, Watchlist }
