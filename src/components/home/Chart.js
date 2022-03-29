@@ -1,16 +1,22 @@
 import React from 'react'
+import { useRecoilValue } from 'recoil'
+import { chartActiveState } from '../../recoil/atom/chartState'
 
 const Chart = () => {
+	const chartActive = useRecoilValue(chartActiveState)
+	const urlChart = `https://dchart.vndirect.com.vn/?theme=dark&timeframe=1&disableSyncSymbol=true&symbol=${chartActive}&domain=https://protrade-trial.vndirect.com.vn&t=function%20now()%20{%20[native%20code]%20`
+
 	return (
 		<>
-			<div id="chart" className="flex-grow-1 flex-shrink-1 m-1">
-				<iframe
-					className="bag-orange"
-					src="https://dchart.vndirect.com.vn/?theme=dark&timeframe=1&disableSyncSymbol=true&symbol=VN30F1M&domain=https://protrade-trial.vndirect.com.vn&t=function%20now()%20{%20[native%20code]%20}"
-					title="Chart"
-					style={{ height: '100%', width: '100%' }}
-				></iframe>
-			</div>
+			{chartActive && (
+				<div id="chart" className="flex-grow-1 flex-shrink-1 m-1">
+					<iframe
+						src={urlChart}
+						title="Chart"
+						style={{ height: '100%', width: '100%' }}
+					></iframe>
+				</div>
+			)}
 		</>
 	)
 }

@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react'
 import { useQuery } from 'react-query'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useResetRecoilState, useSetRecoilState } from 'recoil'
 import { getMapping } from '../../apis/api'
 import { mappingState } from '../../recoil/atom/watchlistState'
+import { chartActiveState } from '../../recoil/atom/chartState'
 
 const Watchlist = () => {
 	const { data: mappingData, status } = useQuery('mappingData', getMapping)
 
 	const [mapping, setMapping] = useRecoilState(mappingState)
+	const setChartActive = useSetRecoilState(chartActiveState)
+	const reset = useResetRecoilState(chartActiveState)
 
 	useEffect(() => {
 		const newMapping = mappingData?.data?.data?.hits
@@ -17,6 +20,11 @@ const Watchlist = () => {
 		const _newMapping = mapping ? [...mapping, ...newMapping] : newMapping
 		setMapping(_newMapping)
 	}, [mappingData])
+
+	const handleClick = (deriCode) => {
+		setChartActive(deriCode)
+		reset
+	}
 
 	return (
 		<>
@@ -52,7 +60,11 @@ const Watchlist = () => {
 								.filter((item) => item?._source.code.includes('VN30F220'))
 								.map((item, index) => (
 									<tr key={index}>
-										<td role="button" className="txt-green" onClick={() => {}}>
+										<td
+											role="button"
+											className="txt-green"
+											onClick={() => handleClick(item._source.deriCode)}
+										>
 											{item?._source.code}
 										</td>
 										<td className="txt-green">1,508</td>
