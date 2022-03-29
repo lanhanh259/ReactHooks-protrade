@@ -48,17 +48,19 @@ const Watchlist = () => {
 							</tr>
 						</thead>
 						<tbody>
-							{mapping.map((item, index) => (
-								<tr key={index}>
-									<td role="button" className="txt-green" onClick={() => {}}>
-										{item?._source.code}
-									</td>
-									<td className="txt-green">1,508</td>
-									<td className="txt-green">-4.5</td>
-									<td className="txt-green">3.88</td>
-									<td>125,182</td>
-								</tr>
-							))}
+							{mapping
+								.filter((item) => item?._source.code.includes('VN30F220'))
+								.map((item, index) => (
+									<tr key={index}>
+										<td role="button" className="txt-green" onClick={() => {}}>
+											{item?._source.code}
+										</td>
+										<td className="txt-green">1,508</td>
+										<td className="txt-green">-4.5</td>
+										<td className="txt-green">3.88</td>
+										<td>125,182</td>
+									</tr>
+								))}
 						</tbody>
 					</table>
 				</div>
