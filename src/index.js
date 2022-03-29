@@ -5,13 +5,24 @@ import { RecoilRoot } from 'recoil'
 import './index.css'
 import AllRoutes from './routers'
 import './statics/scss/main.scss'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false,
+		},
+	},
+})
 
 ReactDOM.render(
 	<React.StrictMode>
 		<RecoilRoot>
-			<Router>
-				<AllRoutes />
-			</Router>
+			<QueryClientProvider client={queryClient}>
+				<Router>
+					<AllRoutes />
+				</Router>
+			</QueryClientProvider>
 		</RecoilRoot>
 	</React.StrictMode>,
 	document.getElementById('root')
