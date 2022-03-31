@@ -48,9 +48,9 @@
 	#history {
 		.derivative-info-row-price > .derivative-info-row-step-price {
 			border-bottom: 1.5px solid #444;
-			.derivative-info-row-step-price__item {
-				// border-left: 1.5px solid #444;
-			}
+			// .derivative-info-row-step-price__item {
+			// 	// border-left: 1.5px solid #444;
+			// }
 		}
 	}
 	#watchlist {
@@ -59,9 +59,17 @@
 		}
 	}
 	#placeorder {
+		.btn-price-match {
+			border: 1px solid $white-color;
+			border-radius: 3px;
+		}
+
+		label {
+			text-align: start;
+		}
 		.form-input-control {
 			line-height: 30px;
-			min-width: 240px;
+			width: 100%;
 
 			padding: 0 5px;
 			border: none;
