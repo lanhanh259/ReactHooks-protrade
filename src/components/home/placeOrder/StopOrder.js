@@ -1,0 +1,93 @@
+import clsx from 'clsx'
+import React, { useState } from 'react'
+import CodeInput from './CodeInput'
+
+const btnList = [{ id: 1 }, { id: 2 }]
+
+const StopOrder = () => {
+	const [active, setActive] = useState(1)
+	const [bidPriceValue, setBidPricevalue] = useState('')
+	const [weightValue, setWeightValue] = useState('')
+	const [triggerPriceValue, setTriggerPricevalue] = useState('')
+
+	return (
+		<form className="p-12">
+			<div className="row m-b-8">
+				<label htmlFor="" className="col-4 m-auto">
+					Mã HĐTL:
+				</label>
+				<div className="col-8">
+					<CodeInput />
+				</div>
+			</div>
+
+			<div className="row m-b-8">
+				<label className="col-4 m-auto">Giá đặt:</label>
+				<div className="col-8">
+					<input
+						className="form-input-control text-dark"
+						value={bidPriceValue}
+						placeholder="Giá"
+						onChange={(e) => setBidPricevalue(e.target.value)}
+					/>
+				</div>
+			</div>
+
+			<div className="row m-b-8 ">
+				<label className="col-4 m-auto">Khối lượng:</label>
+				<div className="col-8">
+					<input
+						className="form-input-control text-dark"
+						value={weightValue}
+						placeholder="KL"
+						onChange={(e) => setWeightValue(e.target.value)}
+					/>
+				</div>
+			</div>
+
+			<div className="row m-b-8 align-items-center">
+				<label className="col-4">Khi giá khớp:</label>
+				<div className="col-8 d-flex">
+					{btnList.map((item) => (
+						<div key={item.id} className="d-flex">
+							<div
+								role="button"
+								className={clsx(
+									'btn-price-match p-x-12 d-flex align-items-center mr-4 ',
+									{
+										'btn-active': item.id === active,
+									}
+								)}
+								onClick={() => setActive(item.id)}
+							>
+								{item.id === 1 && <span>&#8804;</span>}
+								{item.id === 2 && <span>&#8805;</span>}
+							</div>
+						</div>
+					))}
+
+					<input
+						style={{ minWidth: 'auto' }}
+						className="form-input-control text-dark"
+						value={triggerPriceValue}
+						placeholder="Giá kích hoạt"
+						onChange={(e) => setTriggerPricevalue(e.target.value)}
+					/>
+				</div>
+			</div>
+
+			<div className="row m-b-8">
+				<label className="col-4 m-auto">Ngày hết hạn:</label>
+				<div className="col-8">
+					<input
+						className="form-input-control text-dark"
+						value=""
+						placeholder=""
+					/>
+				</div>
+			</div>
+		</form>
+	)
+}
+
+export default StopOrder

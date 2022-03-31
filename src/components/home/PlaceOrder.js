@@ -1,5 +1,7 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import NormalOrder from './placeOrder/NormalOrder'
+import StopOrder from './placeOrder/StopOrder'
 
 const radioList = [
 	{ id: 1, name: 'Lệnh thường' },
@@ -9,7 +11,7 @@ const radioList = [
 ]
 
 const PlaceOrder = () => {
-	const [checked, setChecked] = useState(2)
+	const [checked, setChecked] = useState(1)
 
 	const Radio = () => {
 		return (
@@ -28,121 +30,17 @@ const PlaceOrder = () => {
 			</div>
 		)
 	}
+
 	return (
-		<div
+		<Container
 			id="placeorder"
 			className="bag-second m-1"
 			style={{ minHeigh: '200px', padding: '20px 0 40px 0' }}
 		>
 			<Radio />
-			{checked === 1 && (
-				<form className="p-12">
-					<div className="row m-b-8">
-						<label htmlFor="" className="col-4 m-auto">
-							Mã HĐTL:{' '}
-						</label>
-						<div className="col-8">
-							<input
-								className="form-input-control text-dark"
-								value="VN30F2201"
-								id=""
-								placeholder="Mã"
-							/>
-						</div>
-					</div>
-					<div className="row m-b-8">
-						<label htmlFor="" className="col-4 m-auto">
-							Giá đặt:{' '}
-						</label>
-						<div className="col-8">
-							<input
-								type="text"
-								className="form-input-control text-dark"
-								placeholder="Giá"
-							/>
-						</div>
-					</div>
-					<div className="row m-b-8">
-						<label htmlFor="" className="col-4 m-auto">
-							Khối lượng:
-						</label>
-						<div className="col-8">
-							<input
-								type="text"
-								className="form-input-control text-dark"
-								placeholder="KL"
-							/>
-						</div>
-					</div>
-				</form>
-			)}
+			{checked === 1 && <NormalOrder />}
 
-			{checked === 2 && (
-				<form className="p-12">
-					<div className="row m-b-8">
-						<label htmlFor="" className="col-4 m-auto">
-							Mã HĐTL:
-						</label>
-						<div className="col-8">
-							<input
-								className="form-input-control text-dark"
-								value="VN30F2201"
-								placeholder="Mã"
-							/>
-						</div>
-					</div>
-
-					<div className="row m-b-8">
-						<label className="col-4 m-auto">Giá đặt:</label>
-						<div className="col-8">
-							<input
-								className="form-input-control text-dark"
-								value=""
-								placeholder="Giá"
-							/>
-						</div>
-					</div>
-
-					<div className="row m-b-8 ">
-						<label className="col-4 m-auto">Khối lượng:</label>
-						<div className="col-8">
-							<input
-								className="form-input-control text-dark"
-								value=""
-								placeholder="KL"
-							/>
-						</div>
-					</div>
-
-					<div className="row m-b-8 align-items-center">
-						<label className="col-4">Khi giá khớp:</label>
-						<div className="col-8 d-flex">
-							<div className="d-flex">
-								<div className="btn-price-match  btn-active p-8">&#8804;</div>
-								<div className="btn-price-match  p-8 m-x-8">&#8805;</div>
-							</div>
-
-							<input
-								style={{ minWidth: 'auto' }}
-								className="form-input-control text-dark"
-								value=""
-								placeholder="Giá kích hoạt"
-							/>
-						</div>
-					</div>
-
-					<div className="row m-b-8">
-						<label className="col-4 m-auto">Ngày hết hạn:</label>
-						<div className="col-8">
-							<input
-								className="form-input-control text-dark"
-								value=""
-								placeholder=""
-							/>
-						</div>
-					</div>
-				</form>
-			)}
+			{checked === 2 && <StopOrder />}
 
 			<div className="d-flex justify-content-around align-items-center">
 				<div>
@@ -173,8 +71,14 @@ const PlaceOrder = () => {
 					</div>
 				)}
 			</div>
-		</div>
+		</Container>
 	)
 }
+
+const Container = styled.div`
+	.dropdown-item:hover {
+		background-color: #ccc !important;
+	}
+`
 
 export default PlaceOrder

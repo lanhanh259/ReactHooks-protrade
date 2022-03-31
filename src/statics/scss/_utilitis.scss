@@ -111,6 +111,14 @@ $utilities: map-merge(
 				12: 12px,
 			),
 		),
+		'mr': (
+			property: margin-right,
+			class: mr,
+			values: (
+				4: 4px,
+				8: 8px,
+			),
+		),
 		'm-b': (
 			property: margin-bottom,
 			class: m-b,
