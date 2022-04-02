@@ -19,14 +19,17 @@ const HomePage = () => {
 				className="home d-flex bag-main"
 				style={{ height: 'calc(100vh - 44px)' }}
 			>
-				<div className="d-flex flex-column flex-grow-1 flex-shrink-1 bag-second">
+				<div
+					className="d-flex flex-column flex-grow-1 flex-shrink-1 bag-second"
+					style={{ minWidth: '270px' }}
+				>
 					<Chart />
 					<Market />
 				</div>
 
 				<div
 					className="d-flex flex-column flex-grow-1"
-					style={{ maxWidth: '350px' }}
+					style={{ maxWidth: '350px', minWidth: '350px' }}
 				>
 					<History />
 					<Watchlist />
@@ -35,7 +38,7 @@ const HomePage = () => {
 				{isDisplay && (
 					<div
 						className="d-flex flex-column flex-grow-1"
-						style={{ maxWidth: '400px' }}
+						style={{ maxWidth: '400px', minWidth: '400px' }}
 					>
 						<OrderBook />
 						<PlaceOrder />

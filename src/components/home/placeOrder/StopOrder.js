@@ -1,10 +1,24 @@
 import clsx from 'clsx'
 import React, { useState } from 'react'
-import CodeInput from './CodeInput'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import { CodeInput } from './input'
 
 const btnList = [{ id: 1 }, { id: 2 }]
 
-const StopOrder = () => {
+const Calendar = () => {
+	const [startDate, setStartDate] = useState(new Date())
+
+	return (
+		<DatePicker
+			className="form-input-control text-dark"
+			selected={startDate}
+			onChange={(date) => setStartDate(date)}
+		/>
+	)
+}
+
+export default function StopOrder() {
 	const [active, setActive] = useState(1)
 	const [bidPriceValue, setBidPricevalue] = useState('')
 	const [weightValue, setWeightValue] = useState('')
@@ -78,16 +92,10 @@ const StopOrder = () => {
 
 			<div className="row m-b-8">
 				<label className="col-4 m-auto">Ngày hết hạn:</label>
-				<div className="col-8">
-					<input
-						className="form-input-control text-dark"
-						value=""
-						placeholder=""
-					/>
+				<div className="col-8 ">
+					<Calendar />
 				</div>
 			</div>
 		</form>
 	)
 }
-
-export default StopOrder

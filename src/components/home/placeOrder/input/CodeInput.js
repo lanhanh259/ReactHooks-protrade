@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
 const dropDownList = [
 	{ id: 1, value: 'VN30F2204' },
@@ -6,13 +6,32 @@ const dropDownList = [
 	{ id: 3, value: 'VN30F2206' },
 	{ id: 4, value: 'VN30F2209' },
 ]
-const CodeInput = () => {
+
+export default function CodeInput() {
 	const [isDropdownActive, setIsDropdownActive] = useState(false)
 	const [codeValue, setCodevalue] = useState('VN30F2201')
+
+	const dropdownInput = useRef(null)
 
 	const handleChangeCodeValue = (value) => {
 		setCodevalue(value)
 		setIsDropdownActive(false)
+	}
+
+	useEffect(() => {
+		// add when mounted
+		document.addEventListener('mousedown', handleClickOutSide)
+		// return function to be called when unmounted
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutSide)
+		}
+	}, [])
+
+	const handleClickOutSide = (event) => {
+		// click outside
+		if (!dropdownInput?.current?.contains(event.target)) {
+			setIsDropdownActive(false) // close dropdown
+		}
 	}
 
 	return (
@@ -20,18 +39,23 @@ const CodeInput = () => {
 			<input
 				className="form-input-control text-dark"
 				value={codeValue}
-				id=""
 				placeholder="Mã"
 				onClick={() => {
 					setCodevalue('')
 					setIsDropdownActive(true)
 				}}
+				onChange={(e) => {
+					setIsDropdownActive(false)
+					setCodevalue(e.target.value)
+				}}
 			/>
 			<div
+				ref={dropdownInput}
 				className="position-absolute overflow-hidden rounded-bottom"
 				style={{
 					width: '100%',
 					top: '80%',
+					zIndex: '100',
 				}}
 			>
 				{isDropdownActive &&
@@ -50,5 +74,3 @@ const CodeInput = () => {
 		</div>
 	)
 }
-
-export default CodeInput

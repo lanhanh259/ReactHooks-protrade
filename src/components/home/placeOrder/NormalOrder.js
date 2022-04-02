@@ -1,7 +1,8 @@
 import React from 'react'
-import CodeInput from './CodeInput'
+import styled from 'styled-components'
+import { CodeInput, PriceInput, WeightInput } from './input'
 
-const NormalOrder = () => {
+export default function NormalOrder() {
 	return (
 		<form className="p-12">
 			<div className="row m-b-8">
@@ -12,32 +13,39 @@ const NormalOrder = () => {
 					<CodeInput />
 				</div>
 			</div>
-			<div className="row m-b-8">
+
+			<div className="row m-b-8 ">
 				<label htmlFor="" className="col-4 m-auto">
 					Giá đặt:
 				</label>
-				<div className="col-8">
-					<input
-						type="text"
-						className="form-input-control text-dark"
-						placeholder="Giá"
-					/>
-				</div>
+				<Container className="col-8 position-relative">
+					<PriceInput />
+				</Container>
 			</div>
+
 			<div className="row m-b-8">
 				<label htmlFor="" className="col-4 m-auto">
 					Khối lượng:
 				</label>
-				<div className="col-8">
-					<input
-						type="text"
-						className="form-input-control text-dark"
-						placeholder="KL"
-					/>
-				</div>
+
+				<Container className="col-8 position-relative">
+					<WeightInput />
+				</Container>
 			</div>
 		</form>
 	)
 }
+const Container = styled.div`
+	.tooltip-arrow::after {
+		content: '';
+		display: block;
+		border-width: 8px 10px;
+		border-style: solid;
+		border-color: transparent transparent #555 transparent;
+		position: absolute;
+		top: -45%;
+		left: 15%;
 
-export default NormalOrder
+		// background-color: red;
+	}
+`

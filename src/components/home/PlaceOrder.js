@@ -10,7 +10,7 @@ const radioList = [
 	{ id: 4, name: 'Lệnh OSO' },
 ]
 
-const PlaceOrder = () => {
+export default function PlaceOrder() {
 	const [checked, setChecked] = useState(1)
 
 	const Radio = () => {
@@ -80,5 +80,3 @@ const Container = styled.div`
 		background-color: #ccc !important;
 	}
 `
-
-export default PlaceOrder
