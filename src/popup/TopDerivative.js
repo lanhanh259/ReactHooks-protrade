@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { isPopupState } from '../recoil/atom'
 import topDerivativeImg from '../statics/img/top-derivative.png'
 
-const TopDerivative = () => {
+export default function TopDerivative() {
 	const [isPopup, setIsPopup] = useRecoilState(isPopupState)
 	const navigate = useNavigate()
 
@@ -73,4 +73,3 @@ const Container = styled.div`
 		opacity: 0.8;
 	}
 `
-export default TopDerivative

@@ -5,7 +5,7 @@ import { getMapping } from '../../apis/api'
 import { mappingState } from '../../recoil/atom/watchlistState'
 import { chartActiveState } from '../../recoil/atom/chartState'
 
-const Watchlist = () => {
+export default function Watchlist() {
 	const { data: mappingData, status } = useQuery('mappingData', getMapping)
 
 	const [mapping, setMapping] = useRecoilState(mappingState)
@@ -80,5 +80,3 @@ const Watchlist = () => {
 		</>
 	)
 }
-
-export default Watchlist

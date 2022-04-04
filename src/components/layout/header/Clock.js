@@ -1,7 +1,7 @@
 import React from 'react'
 import { useClock } from '../../../hooks'
 
-const Clock = () => {
+export default function Clock() {
 	const { date, time } = useClock()
 
 	return (
@@ -11,5 +11,3 @@ const Clock = () => {
 		</div>
 	)
 }
-
-export default Clock

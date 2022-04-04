@@ -1,18 +1,28 @@
+import clsx from 'clsx'
 import React from 'react'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import {
 	Chart,
 	History,
 	Market,
-	OrderBook,
+	Order,
 	PlaceOrder,
 	Watchlist,
 } from '../components/home'
-import { isDisplayState } from '../recoil/atom'
+import { isDisplayState, menuItemActiveState } from '../recoil/atom'
 
-const HomePage = () => {
+const menuList = [
+	{ id: 1, name: 'Sổ lệnh' },
+	{ id: 2, name: 'Danh mục' },
+	{ id: 3, name: 'Tài sản' },
+]
+
+export default function HomePage() {
 	const isDisplay = useRecoilValue(isDisplayState)
+	const [menuItemActive, setMenuItemActive] =
+		useRecoilState(menuItemActiveState)
 
+	console.log('menuItemActive', menuItemActive)
 	return (
 		<div id="app">
 			<div
@@ -40,22 +50,22 @@ const HomePage = () => {
 						className="d-flex flex-column flex-grow-1"
 						style={{ maxWidth: '400px', minWidth: '400px' }}
 					>
-						<OrderBook />
+						<Order />
 						<PlaceOrder />
-						<div className="d-flex">
-							<div
-								role="button"
-								className="lh-30 cursor-pointer active flex-grow-1"
-							>
-								Sổ lệnh
-							</div>
-							<div role="button" className="lh-30 cs-pointer flex-grow-1">
-								Danh mục
-							</div>
-
-							<div role="button" className="lh-30 cs-pointer flex-grow-1">
-								Tài sản
-							</div>
+						<div className="menu d-flex">
+							{menuList.map((item) => (
+								<div
+									key={item.id}
+									role="button"
+									// className="lh-30 cursor-pointer active flex-grow-1"
+									className={clsx('lh-30 cursor-pointer flex-grow-1', {
+										active: item.id === menuItemActive,
+									})}
+									onClick={() => setMenuItemActive(item.id)}
+								>
+									{item.name}
+								</div>
+							))}
 						</div>
 					</div>
 				)}
@@ -71,5 +81,3 @@ const HomePage = () => {
 		</div>
 	)
 }
-
-export default HomePage

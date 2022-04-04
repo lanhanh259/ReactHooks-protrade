@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const InstructionsPage = () => {
+export default function InstructionsPage() {
 	return (
 		<Container>
 			<div id="guide">
@@ -27,4 +27,3 @@ const Container = styled.div`
 		background-position: 50%;
 	}
 `
-export default InstructionsPage

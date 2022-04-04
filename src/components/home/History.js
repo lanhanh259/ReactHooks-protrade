@@ -5,7 +5,7 @@ const list = [
 	{ id: 1, name: 'Bước giá', active: true },
 	{ id: 2, name: 'Lịch sử khớp lệnh', active: false },
 ]
-const History = () => {
+export default function History() {
 	const [active, setActive] = useState(1)
 
 	return (
@@ -217,5 +217,3 @@ const History = () => {
 		</>
 	)
 }
-
-export default History

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Market = () => {
+export default function Market() {
 	return (
 		<div
 			id="market"
@@ -37,5 +37,3 @@ const Market = () => {
 		</div>
 	)
 }
-
-export default Market

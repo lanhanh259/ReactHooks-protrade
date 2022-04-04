@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react'
+import styled from 'styled-components'
 
 const priceList = [
 	{
@@ -43,7 +44,7 @@ export default function PriceInput() {
 				{priceList.map((item) => (
 					<div
 						key={item.id}
-						className="border rounded p-y-4 p-x-8 m-x-4 txt-ccc"
+						className="price-item border rounded p-y-4 p-x-8 m-x-4 txt-ccc"
 						role="button"
 						onClick={() => {
 							setinputPriceValue(item.name)
@@ -73,7 +74,7 @@ export default function PriceInput() {
 				onChange={(e) => setinputPriceValue(e.target.value)}
 			/>
 			{isPriceTooltipActive && (
-				<div
+				<Container
 					ref={PriceTooltipRef}
 					className="tooltip-arrow d-flex position-absolute end-0 p-4 m-x-12 rounded"
 					style={{
@@ -83,8 +84,14 @@ export default function PriceInput() {
 					}}
 				>
 					<PriceTooltip />
-				</div>
+				</Container>
 			)}
 		</>
 	)
 }
+
+const Container = styled.div`
+	.price-item:hover {
+		background-color: #777;
+	}
+`

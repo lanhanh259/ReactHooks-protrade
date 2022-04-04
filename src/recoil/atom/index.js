@@ -9,3 +9,8 @@ export const isPopupState = atom({
 	key: 'isPopupState',
 	default: false,
 })
+
+export const menuItemActiveState = atom({
+	key: 'menuItemActiveState',
+	default: 3,
+})

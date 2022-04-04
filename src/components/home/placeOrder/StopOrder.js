@@ -14,6 +14,7 @@ const Calendar = () => {
 			className="form-input-control text-dark"
 			selected={startDate}
 			onChange={(date) => setStartDate(date)}
+			includeDates={[new Date()]}
 		/>
 	)
 }

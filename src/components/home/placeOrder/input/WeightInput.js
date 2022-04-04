@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 export default function WeightInput() {
-	const [isWeightTooltipActive, setisWeightTooltipActive] = useState(true)
+	const [isWeightTooltipActive, setisWeightTooltipActive] = useState(false)
 	const [inputWeightValue, setinputWeightValue] = useState('')
 
 	const WeightTooltipRef = useRef(null)

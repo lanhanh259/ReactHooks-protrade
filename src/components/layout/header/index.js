@@ -1,12 +1,17 @@
+import clsx from 'clsx'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useRecoilState } from 'recoil'
 import { isPopupState } from '../../../recoil/atom'
+import { menuHeaderActiveState } from '../../../recoil/atom/headerState'
 import logo from '../../../statics/img/logo.svg'
 import Clock from './Clock'
 
-const Header = () => {
+export default function Header() {
 	const [isPopup, setIsPopup] = useRecoilState(isPopupState)
+	const [menuHeaderActive, setMenuHeaderActive] = useRecoilState(
+		menuHeaderActiveState
+	)
 
 	return (
 		<div>
@@ -30,24 +35,36 @@ const Header = () => {
 					<ul className="flex-shrink-0 d-flex ">
 						<li>
 							<Link
-								className="active txt-white fw-700 p-x-12 p-y-4 bs-333 border-333"
 								to="/trang-chu"
+								className={clsx(
+									'txt-white fw-700 p-x-12 p-y-4 bs-333 border-333',
+									{ active: menuHeaderActive === 'trang-chu' }
+								)}
+								onClick={() => setMenuHeaderActive('trang-chu')}
 							>
 								Trang chủ
 							</Link>
 						</li>
 						<li>
 							<Link
-								className="txt-white fw-700 p-x-12 p-y-4 bs-333 border-333"
 								to="/tai-san"
+								className={clsx(
+									'txt-white fw-700 p-x-12 p-y-4 bs-333 border-333',
+									{ active: menuHeaderActive === 'tai-san' }
+								)}
+								onClick={() => setMenuHeaderActive('tai-san')}
 							>
 								Tài sản
 							</Link>
 						</li>
 						<li>
 							<Link
-								className="txt-white fw-700 p-x-12 p-y-4 bs-333 border-333"
 								to="/huong-dan-su-dung"
+								className={clsx(
+									'txt-white fw-700 p-x-12 p-y-4 bs-333 border-333',
+									{ active: menuHeaderActive === 'huong-dan-su-dung' }
+								)}
+								onClick={() => setMenuHeaderActive('huong-dan-su-dung')}
 							>
 								Hướng dẫn
 							</Link>
@@ -117,5 +134,3 @@ const Header = () => {
 		</div>
 	)
 }
-
-export default Header

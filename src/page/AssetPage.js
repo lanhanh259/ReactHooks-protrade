@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const AssetPage = () => {
+export default function AssetPage() {
 	return (
 		<Container>
 			<div className="bag-second" style={{ padding: ' 42px 0' }}>
@@ -155,4 +155,3 @@ const Container = styled.div`
 		border-bottom: 1px solid #a1a1a1;
 	}
 `
-export default AssetPage
