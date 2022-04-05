@@ -12,5 +12,5 @@ export const isPopupState = atom({
 
 export const menuItemActiveState = atom({
 	key: 'menuItemActiveState',
-	default: 3,
+	default: 1,
 })

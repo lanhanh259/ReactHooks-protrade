@@ -6,11 +6,16 @@ import { mappingState } from '../../recoil/atom/watchlistState'
 import { chartActiveState } from '../../recoil/atom/chartState'
 
 export default function Watchlist() {
-	const { data: mappingData, status } = useQuery('mappingData', getMapping)
-
 	const [mapping, setMapping] = useRecoilState(mappingState)
 	const setChartActive = useSetRecoilState(chartActiveState)
 	const reset = useResetRecoilState(chartActiveState)
+
+	const {
+		data: mappingData,
+		status,
+		isLoading,
+		error,
+	} = useQuery('mappingData', getMapping)
 
 	useEffect(() => {
 		const newMapping = mappingData?.data?.data?.hits
@@ -26,6 +31,8 @@ export default function Watchlist() {
 		reset
 	}
 
+	if (isLoading) return 'Loading...'
+	if (error) return 'An error has occurred: ' + error.message
 	return (
 		<>
 			{status === 'success' && Array.isArray(mapping) && (

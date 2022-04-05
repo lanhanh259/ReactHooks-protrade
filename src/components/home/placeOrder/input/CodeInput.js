@@ -1,20 +1,30 @@
-import React, { useRef, useState, useEffect } from 'react'
-
-const dropDownList = [
-	{ id: 1, value: 'VN30F2204' },
-	{ id: 2, value: 'VN30F2205' },
-	{ id: 3, value: 'VN30F2206' },
-	{ id: 4, value: 'VN30F2209' },
-]
+import React, { useEffect, useRef, useState } from 'react'
+import { useQuery } from 'react-query'
+import { useSetRecoilState } from 'recoil'
+import { getMapping } from '../../../../apis/api'
+import { chartActiveState } from '../../../../recoil/atom/chartState'
 
 export default function CodeInput() {
 	const [isDropdownActive, setIsDropdownActive] = useState(false)
 	const [codeValue, setCodevalue] = useState('VN30F2201')
+	const setChartActive = useSetRecoilState(chartActiveState)
 
 	const dropdownInput = useRef(null)
 
+	const {
+		data: mappingData,
+		status,
+		isLoading,
+		error,
+	} = useQuery('mappingData', getMapping)
+
+	const dropDownList = mappingData?.data?.data?.hits.map(
+		(item) => item?._source
+	)
+
 	const handleChangeCodeValue = (value) => {
 		setCodevalue(value)
+		setChartActive(value)
 		setIsDropdownActive(false)
 	}
 
@@ -34,43 +44,52 @@ export default function CodeInput() {
 		}
 	}
 
+	if (isLoading) return 'Loading...'
+	if (error) return 'An error has occurred: ' + error.message
 	return (
-		<div className="position-relative">
-			<input
-				className="form-input-control text-dark"
-				value={codeValue}
-				placeholder="Mã"
-				onClick={() => {
-					setCodevalue('')
-					setIsDropdownActive(true)
-				}}
-				onChange={(e) => {
-					setIsDropdownActive(false)
-					setCodevalue(e.target.value)
-				}}
-			/>
-			<div
-				ref={dropdownInput}
-				className="position-absolute overflow-hidden rounded-bottom"
-				style={{
-					width: '100%',
-					top: '80%',
-					zIndex: '100',
-				}}
-			>
-				{isDropdownActive &&
-					dropDownList.map((item) => (
-						<div
-							key={item.id}
-							role="button"
-							className="dropdown-item bag-white txt-main lh-30 text-start"
-							style={{ padding: '0 5px', fontSize: '11px' }}
-							onClick={() => handleChangeCodeValue(item.value)}
-						>
-							{item.value}
-						</div>
-					))}
-			</div>
-		</div>
+		<>
+			{status === 'success' && (
+				<div className="position-relative">
+					<input
+						className="form-input-control text-dark"
+						value={codeValue}
+						placeholder="Mã"
+						onClick={() => {
+							setCodevalue('')
+							setIsDropdownActive(true)
+						}}
+						onChange={(e) => {
+							setIsDropdownActive(false)
+							setCodevalue(e.target.value)
+						}}
+					/>
+					<div
+						ref={dropdownInput}
+						className="position-absolute rounded-bottom overflow-auto"
+						style={{
+							top: '80%',
+							zIndex: '100',
+							height: '120px',
+							width: 'calc(100% + 10px)',
+						}}
+					>
+						{isDropdownActive &&
+							dropDownList
+								.filter((item) => item?.code.includes('VN30F220'))
+								.map((item) => (
+									<div
+										key={item.id}
+										role="button"
+										className="dropdown-item bag-white txt-main lh-30 text-start"
+										style={{ padding: '0 5px', fontSize: '11px' }}
+										onClick={() => handleChangeCodeValue(item.code)}
+									>
+										{item.code}
+									</div>
+								))}
+					</div>
+				</div>
+			)}
+		</>
 	)
 }

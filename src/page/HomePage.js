@@ -22,7 +22,6 @@ export default function HomePage() {
 	const [menuItemActive, setMenuItemActive] =
 		useRecoilState(menuItemActiveState)
 
-	console.log('menuItemActive', menuItemActive)
 	return (
 		<div id="app">
 			<div

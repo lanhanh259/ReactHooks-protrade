@@ -26,10 +26,6 @@ export default function Header() {
 						/>
 					</a>
 				</div>
-				{/* <div className="d-flex align-items-center  p-x-16 ">
-					<span className="flex-shrink-0  fw-700 m-x-8 txt-orange">{time}</span>
-					<span className="flex-shrink-0 fw-500 txt-orange">{date}</span>
-				</div> */}
 				<Clock />
 				<div className="header__horizontal-menu d-flex">
 					<ul className="flex-shrink-0 d-flex ">
