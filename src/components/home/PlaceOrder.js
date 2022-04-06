@@ -17,8 +17,9 @@ export default function PlaceOrder() {
 		return (
 			<div className="d-flex justify-content-around">
 				{radioList.map((item) => (
-					<label key={item.id}>
+					<label key={item.id} className="d-flex align-items-center">
 						<input
+							className="mr-4"
 							type="radio"
 							value={item.name}
 							checked={checked === item.id}

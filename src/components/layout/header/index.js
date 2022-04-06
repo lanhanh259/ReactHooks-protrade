@@ -71,7 +71,7 @@ export default function Header() {
 						<span className="txt-yellow  p-x-4">0</span>
 					</div>
 				</div>
-				<div className="header__profitloss-top flex-grow-1 text-center">
+				<div className="header__profitloss-top flex-grow-1 text-start p-x-12">
 					<div
 						role="button"
 						className=" d-inline rounded p-y-4 p-x-12"
@@ -94,10 +94,10 @@ export default function Header() {
 						</span>
 					</div>
 					<div className="header__uplevel flex-shrink-0">
-						<span className="rounded p-y-4 bag-orange">
+						<span className="rounded p-y-4 bag-orange mr-12">
 							<a
 								className=" p-x-8"
-								href="https://myaccount.vndirect.com.vn/account-info?tab=account-register"
+								href="https://myaccount.vndirect.com.vn/account-info?tab=account-register "
 								target="_blank"
 								rel="noreferrer"
 							>

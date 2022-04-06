@@ -117,6 +117,15 @@ $utilities: map-merge(
 			values: (
 				4: 4px,
 				8: 8px,
+				12: 12px,
+			),
+		),
+		'ml': (
+			property: margin-left,
+			class: ml,
+			values: (
+				4: 4px,
+				8: 8px,
 			),
 		),
 		'm-b': (
@@ -156,6 +165,7 @@ $utilities: map-merge(
 			property: z-index,
 			class: z,
 			values: (
+				10: 10,
 				100: 100,
 			),
 		),

@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
 
-const list = [
-	{ id: 1, name: 'Bước giá', active: true },
-	{ id: 2, name: 'Lịch sử khớp lệnh', active: false },
-]
 export default function History() {
-	const [active, setActive] = useState(1)
+	const [active, setActive] = useState('Bước giá')
 
 	return (
 		<>
@@ -40,18 +36,24 @@ export default function History() {
 
 				<div>
 					<div className="d-flex text-center lh-30">
-						{list.map((item) => (
-							<span
-								key={item.id}
-								role="button"
-								className={clsx('flex-grow-1', 'fw-700', {
-									active: item.id === active,
-								})}
-								onClick={() => setActive(item.id)}
-							>
-								{item.name}
-							</span>
-						))}
+						<span
+							role="button"
+							className={clsx('flex-grow-1', 'fw-700', {
+								active: active === 'Bước giá',
+							})}
+							onClick={() => setActive('Bước giá')}
+						>
+							Bước giá
+						</span>
+						<span
+							role="button"
+							className={clsx('flex-grow-1', 'fw-700', {
+								active: active === 'Lịch sử khớp lệnh',
+							})}
+							onClick={() => setActive('Lịch sử khớp lệnh')}
+						>
+							Lịch sử khớp lệnh
+						</span>
 					</div>
 					{active === 1 ? (
 						<div>
