@@ -1,9 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+const WeightTooltip = () => {
+	return (
+		<>
+			<div>
+				KL mua tối đa: <span className="txt-orange fw-bold">0</span>
+			</div>
+			<div style={{ marginLeft: 'auto' }}>
+				KL bán tối đa: <span className="txt-orange fw-bold">0</span>
+			</div>
+		</>
+	)
+}
+
 export default function WeightInput() {
 	const [isWeightTooltipActive, setisWeightTooltipActive] = useState(false)
 	const [inputWeightValue, setinputWeightValue] = useState('')
 
+	const WeightInputRef = useRef(null)
 	const WeightTooltipRef = useRef(null)
 
 	useEffect(() => {
@@ -15,28 +29,16 @@ export default function WeightInput() {
 	}, [])
 
 	const handleClickOutSide = (e) => {
-		if (!WeightTooltipRef?.current?.contains(e.target)) {
+		if (
+			!WeightInputRef?.current?.contains(e.target) &&
+			!WeightTooltipRef?.current?.contains(e.target)
+		) {
 			setisWeightTooltipActive(false)
 		}
 	}
 
-	const WeightTooltip = () => {
-		return (
-			<>
-				<div>
-					KL mua tối đa: <span className="txt-orange fw-bold">0</span>
-				</div>
-				<div style={{ marginLeft: 'auto' }}>
-					KL bán tối đa: <span className="txt-orange fw-bold">0</span>
-				</div>
-			</>
-		)
-	}
 	const handleChangeWeightValueInput = (e) => {
-		console.log(!isNaN(+e.target.value))
 		if (!isNaN(+e.target.value)) {
-			console.log('set')
-
 			setinputWeightValue(e.target.value)
 		}
 	}
@@ -44,21 +46,22 @@ export default function WeightInput() {
 	return (
 		<>
 			<input
+				ref={WeightInputRef}
 				value={inputWeightValue}
 				className="form-input-control text-dark"
 				placeholder="KL"
-				onClick={() => setisWeightTooltipActive(!isWeightTooltipActive)}
+				onClick={() => setisWeightTooltipActive(true)}
 				onChange={handleChangeWeightValueInput}
 			/>
 			{isWeightTooltipActive && (
 				<div
+					ref={WeightTooltipRef}
 					className="tooltip-arrow d-flex flex-wrap position-absolute end-0  start-0 p-8 m-x-12 rounded"
 					style={{
 						backgroundColor: '#555',
 						top: 'calc(100% + 8px)',
 						zIndex: '100',
 					}}
-					ref={WeightTooltipRef}
 				>
 					<WeightTooltip />
 				</div>

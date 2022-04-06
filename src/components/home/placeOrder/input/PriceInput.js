@@ -28,6 +28,7 @@ export default function PriceInput() {
 	const [inputPriceValue, setinputPriceValue] = useState('')
 	const [isPriceTooltipActive, setisPriceTooltipActive] = useState(false)
 
+	const PriceInputRef = useRef(null)
 	const PriceTooltipRef = useRef(null)
 
 	useEffect(() => {
@@ -59,7 +60,10 @@ export default function PriceInput() {
 	}
 
 	const handleClickOutSide = (e) => {
-		if (!PriceTooltipRef?.current?.contains(e.target)) {
+		if (
+			!PriceInputRef?.current?.contains(e.target) &&
+			!PriceTooltipRef?.current?.contains(e.target)
+		) {
 			setisPriceTooltipActive(false)
 		}
 	}
@@ -67,12 +71,14 @@ export default function PriceInput() {
 	return (
 		<>
 			<input
+				ref={PriceInputRef}
 				value={inputPriceValue}
 				className="form-input-control text-dark"
 				placeholder="Giá"
-				onClick={() => setisPriceTooltipActive(!isPriceTooltipActive)}
+				onClick={() => setisPriceTooltipActive(true)}
 				onChange={(e) => setinputPriceValue(e.target.value)}
 			/>
+
 			{isPriceTooltipActive && (
 				<Container
 					ref={PriceTooltipRef}

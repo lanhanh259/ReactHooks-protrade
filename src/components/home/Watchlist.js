@@ -1,27 +1,24 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useQuery } from 'react-query'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useSetRecoilState } from 'recoil'
 import { getMapping } from '../../apis/api'
 import { chartActiveState } from '../../recoil/atom/chartState'
-import { mappingDataState } from '../../recoil/atom/watchlistState'
 
 const Watchlist = () => {
-	const { data } = useQuery('mapping', getMapping)
+	const {
+		data: mappingData,
+		isLoading,
+		error,
+	} = useQuery('mapping', getMapping)
 
-	const [mappingData, setMappingData] = useRecoilState(mappingDataState)
 	const setChartActive = useSetRecoilState(chartActiveState)
-
-	useEffect(() => {
-		setMappingData(data)
-	}, [data])
 
 	const handleClick = (deriCode) => {
 		setChartActive(deriCode)
 	}
 
-	if (mappingData?.isLoading) return 'Loading...'
-	if (mappingData?.error)
-		return 'An error has occurred: ' + mappingData.error.message
+	if (isLoading) return 'Loading...'
+	if (error) return 'An error has occurred: ' + error.message
 	return (
 		<div id="watchlist" className="m-1 bag-second" style={{ height: '45%' }}>
 			<table className="w-100 text-center">

@@ -6,25 +6,25 @@ import { getMapping } from '../../../../apis/api'
 import { chartActiveState } from '../../../../recoil/atom/chartState'
 
 export default function CodeInput() {
-	const [isDropdownActive, setIsDropdownActive] = useState(false)
-	const [codeValueInput, setcodeValueInput] = useState('VN30F2201')
-	const setChartActive = useSetRecoilState(chartActiveState)
-
-	// console.log('isDropdownActive:', isDropdownActive)
-
-	const dropdownInput = useRef(null)
-
 	const {
 		data: mappingData,
 		isLoading,
 		error,
 	} = useQuery('mappingData', getMapping)
+	const [isDropdownActive, setIsDropdownActive] = useState(false)
+	const [codeValueInput, setcodeValueInput] = useState('VN30F2201')
+	const setChartActive = useSetRecoilState(chartActiveState)
+
+	const codeInputRef = useRef(null)
+	const dropdowntRef = useRef(null)
 
 	const dropDownList = mappingData?.data?.data?.hits.map(
 		(item) => item?._source
 	)
 
 	const handleChangecodeValueInput = (value) => {
+		console.log('value', value)
+
 		setcodeValueInput(value)
 		setChartActive(value)
 		setIsDropdownActive(false)
@@ -41,7 +41,10 @@ export default function CodeInput() {
 
 	const handleClickOutSide = (event) => {
 		// click outside
-		if (!dropdownInput?.current?.contains(event.target)) {
+		if (
+			!codeInputRef?.current?.contains(event.target) &&
+			!dropdowntRef?.current?.contains(event.target)
+		) {
 			setIsDropdownActive(false) // close dropdown
 		}
 	}
@@ -51,6 +54,7 @@ export default function CodeInput() {
 	return (
 		<div className="position-relative">
 			<input
+				ref={codeInputRef}
 				className="form-input-control text-dark"
 				value={codeValueInput}
 				placeholder="Mã"
@@ -64,7 +68,7 @@ export default function CodeInput() {
 				}}
 			/>
 			<div
-				ref={dropdownInput}
+				ref={dropdowntRef}
 				className={clsx('position-absolute rounded-bottom overflow-auto', {
 					'z-100': isDropdownActive,
 				})}
