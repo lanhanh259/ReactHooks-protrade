@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import React, { useEffect, useRef, useState } from 'react'
 import { useQuery } from 'react-query'
 import { useSetRecoilState } from 'recoil'
@@ -11,6 +12,7 @@ export default function CodeInput() {
 
 	const dropdownInput = useRef(null)
 
+	console.log('isDropdownActive :', isDropdownActive)
 	const {
 		data: mappingData,
 		status,
@@ -55,20 +57,24 @@ export default function CodeInput() {
 						value={codeValue}
 						placeholder="Mã"
 						onClick={() => {
+							console.log('click')
+
 							setCodevalue('')
 							setIsDropdownActive(true)
 						}}
 						onChange={(e) => {
+							console.log('change')
 							setIsDropdownActive(false)
 							setCodevalue(e.target.value)
 						}}
 					/>
 					<div
 						ref={dropdownInput}
-						className="position-absolute rounded-bottom overflow-auto"
+						className={clsx('position-absolute rounded-bottom overflow-auto', {
+							'z-100': isDropdownActive,
+						})}
 						style={{
 							top: '80%',
-							zIndex: '100',
 							height: '120px',
 							width: 'calc(100% + 10px)',
 						}}

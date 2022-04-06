@@ -43,7 +43,8 @@ const Container = styled.div`
 		border-style: solid;
 		border-color: transparent transparent #555 transparent;
 		position: absolute;
-		top: -45%;
+		z-index: 100000;
+		top: -42%;
 		left: 15%;
 
 		// background-color: red;

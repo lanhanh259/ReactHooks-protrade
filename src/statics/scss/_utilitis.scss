@@ -152,5 +152,12 @@ $utilities: map-merge(
 				50: 50%,
 			),
 		),
+		'z': (
+			property: z-index,
+			class: z,
+			values: (
+				100: 100,
+			),
+		),
 	)
 );
