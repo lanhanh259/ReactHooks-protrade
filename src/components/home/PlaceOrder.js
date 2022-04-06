@@ -58,7 +58,10 @@ export default function PlaceOrder() {
 					</div>
 				</div>
 				{checked === 1 && (
-					<div className=" align-self-center" style={{ fontSize: '14px' }}>
+					<div
+						className=" align-self-center position-relative z-10"
+						style={{ fontSize: '14px' }}
+					>
 						<input
 							className=""
 							type="checkbox"

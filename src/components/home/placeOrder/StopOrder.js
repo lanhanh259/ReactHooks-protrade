@@ -38,7 +38,7 @@ export default function StopOrder() {
 
 			<div className="row m-b-8">
 				<label className="col-4 m-auto">Giá đặt:</label>
-				<div className="col-8">
+				<div className="col-8 position-relative z-10">
 					<input
 						className="form-input-control text-dark"
 						value={bidPriceValue}
@@ -50,7 +50,7 @@ export default function StopOrder() {
 
 			<div className="row m-b-8 ">
 				<label className="col-4 m-auto">Khối lượng:</label>
-				<div className="col-8">
+				<div className="col-8 position-relative z-10">
 					<input
 						className="form-input-control text-dark"
 						value={weightValue}
@@ -62,7 +62,7 @@ export default function StopOrder() {
 
 			<div className="row m-b-8 align-items-center">
 				<label className="col-4">Khi giá khớp:</label>
-				<div className="col-8 d-flex">
+				<div className="col-8 position-relative z-10 d-flex">
 					{btnList.map((item) => (
 						<div key={item.id} className="d-flex">
 							<div

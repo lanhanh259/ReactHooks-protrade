@@ -12,7 +12,6 @@ export default function CodeInput() {
 
 	const dropdownInput = useRef(null)
 
-	console.log('isDropdownActive :', isDropdownActive)
 	const {
 		data: mappingData,
 		status,
@@ -57,13 +56,10 @@ export default function CodeInput() {
 						value={codeValue}
 						placeholder="Mã"
 						onClick={() => {
-							console.log('click')
-
 							setCodevalue('')
 							setIsDropdownActive(true)
 						}}
 						onChange={(e) => {
-							console.log('change')
 							setIsDropdownActive(false)
 							setCodevalue(e.target.value)
 						}}
